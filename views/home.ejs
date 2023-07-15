@@ -1,0 +1,12 @@
+    <h1>Home page</h1>
+    <h2> Halo nama saya <%= nama %> </h2>
+    <div>
+        <ul>
+            <% products.forEach(product => { %>
+            <li>
+                <h3><%= product.nama %></h3>
+                <dl><%= product.desc %></>
+            </li>
+            <% }) %>
+        </ul>
+    </div>

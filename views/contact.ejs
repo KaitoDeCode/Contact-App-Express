@@ -1,3 +1,43 @@
-<main class="p-5">
-   
+<main class="container">
+    <div class="w-full h-[30vh] flex items-center justify-center flex-col">
+        <h1 class="font-bold uppercase text-3xl text-yellow-500">Daftar Kontak</h1>
+        <hr class="bg-yellow-200 w-[80%] h-1">
+    </div>
+    <div>
+     
+        <table class="border-collapse border border-yellow-200 mx-auto">
+            <thead class="">
+                <tr class="">
+                    <th class="py-2 px-3 border text-yellow-600 border-yellow-200">No.</th>
+                    <th class="py-2 px-3 border text-yellow-600 border-yellow-200">Nama</th>
+                    <th class="py-2 px-3 border hidden md:table-cell text-yellow-600 border-yellow-200">No Hp</th>
+                    <th class="py-2 px-3 border text-yellow-600 border-yellow-200">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(contacts.length === 0){%>
+                    <tr>
+                        <td class="py-2 px-3 border border-yellow-200 text-slate-700 font-semibold">1.</td>
+                        <td class="py-2 px-3 border border-yellow-200 text-slate-700 font-semibold">Kosong</td>
+                        <td class="py-2 px-3 border hidden md:table-cell border-yellow-200">Kosong</td>
+                        <td class="py-2 px-3 border border-yellow-200">
+                            <a class="bg-yellow-600 hover:bg-yellow-600 w-[75px] h-8 flex items-center text-white font-semibold  justify-center rounded-full" href=""><i class="bi bi-info-circle"></i> Detail</a>
+                        </td>
+                    </tr>
+                <% } %>
+                <% contacts.forEach((contact,index) => { %>
+
+
+                <tr>
+                    <td class="py-2 px-3 border border-yellow-200 text-slate-700 font-semibold"> <%= index+1 %> </td>
+                    <td class="py-2 px-3 border border-yellow-200 text-slate-700 font-semibold"> <%= contact.nama %> </td>
+                    <td class="py-2 px-3 border hidden md:table-cell border-yellow-200"> <%= contact.nohp %> </td>
+                    <td class="py-2 px-3 border border-yellow-200">
+                        <a href="/contact/<%=contact.nama%>" class="bg-yellow-600 hover:bg-yellow-600 w-[75px] h-8 flex items-center text-white font-semibold  justify-center rounded-full"><i class="bi bi-info-circle"></i> Detail</a>
+                    </td>
+                </tr>
+               <% }); %>
+            </tbody>
+        </table>
+    </div>
 </main>

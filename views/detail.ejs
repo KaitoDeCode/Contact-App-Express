@@ -1,0 +1,23 @@
+<main class="container">
+    <div class="w-full h-[20vh] flex flex-col items-center justify-center">
+        <h1 class="text-3xl font-bold text-yellow-500">Detail Contact</h1>
+        <hr class="w-56 h-1 bg-yellow-400">
+    </div>
+
+    <% if (!contact) {%>
+    <div class="mx-auto w-60 border p-5 rounded-lg shadow-md">
+        <h4 class=" text-yellow-600 font-bold ">Contact tidak Ditemukan</h4>
+        <a class="text-red-700  font-bold" href="/contact"><%="<== Back" %></a>
+    </div>
+
+    <%}else{%>
+
+    <div class="mx-auto w-60 border p-5 rounded-lg shadow-md">
+        <h2 class="text-yellow-600 font-bold text-xl"><%= contact.nama %></h2>
+        <h3><%= contact.nohp %></h3>
+        <h3><%= contact.email %></h3>
+        <a class="text-red-700 font-bold" href="/contact"><%="<== Back" %></a>
+    </div>
+
+    <% } %>
+</main>

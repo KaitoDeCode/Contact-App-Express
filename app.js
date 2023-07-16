@@ -1,21 +1,11 @@
 const express = require('express');
 const app = express();
+const { loadContact, findContact } = require('./utils/contacts');
 const port = 4004
 const expressLayout = require('express-ejs-layouts');
-const morgan = require('morgan');
 app.set('view engine','ejs')
-
-//Third Party middleware
 app.use(expressLayout)
-app.use(morgan('dev'))
 
-// Aplication level middleware
-// app.use((req,res,next)=>{
-//     console.log("Date now : "+ Date.now())
-//     next()
-// })
-
-//Built-in level middleware
 app.use(express.static('public')) 
 
 const products = [
@@ -47,10 +37,22 @@ app.get('/about',(req,res)=>{
         title:'Contact-App/about'
     }) 
 })
+
 app.get('/contact',(req,res)=>{
+    const contacts = loadContact()
     res.render('contact',{
         layout : 'layouts/layout',
-        title:'Contact-App/contact'
+        title:'Contact-App/contact',
+        contacts
+    }) 
+})
+
+app.get('/contact/:nama',(req,res)=>{
+    const contact = findContact(req.params.nama)
+    res.render('detail',{
+        layout : 'layouts/layoutDetail',
+        title: "detail page",
+        contact
     }) 
 })
 
